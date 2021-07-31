@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorsGame", "ColorsGame\ColorsGame.csproj", "{BCD77DCB-0F76-4D0B-B999-189B854AF792}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCD77DCB-0F76-4D0B-B999-189B854AF792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD77DCB-0F76-4D0B-B999-189B854AF792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD77DCB-0F76-4D0B-B999-189B854AF792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD77DCB-0F76-4D0B-B999-189B854AF792}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F19A381-9204-4E30-9A09-DEDFB30DFA66}
+	EndGlobalSection
+EndGlobal
