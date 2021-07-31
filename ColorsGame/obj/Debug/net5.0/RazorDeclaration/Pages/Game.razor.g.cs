@@ -13,77 +13,77 @@ namespace ColorsGame.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 1 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 2 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 4 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 5 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 6 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 7 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 8 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 9 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using ColorsGame;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\_Imports.razor"
+#line 10 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\_Imports.razor"
 using ColorsGame.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\Pages\Game.razor"
+#line 2 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
 using Models;
 
 #line default
@@ -98,13 +98,14 @@ using Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 112 "C:\Users\ASUS\source\repos\ColorsGame\ColorsGame\Pages\Game.razor"
+#line 112 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
  
     static int niveau = 1;
+    static int chance = 0;
     Grid ActuelGrid = new Grid();
     protected override Task OnInitializedAsync()
     {
-        ActuelGrid.InitialGrid(); 
+        ActuelGrid.InitialGrid();
         return base.OnInitializedAsync();
     }
 
@@ -116,15 +117,20 @@ using Models;
     public void ColorFounded()
     {
         Console.WriteLine("coool");
+        chance = 0;
         niveau++;
         ActuelGrid.RefreshGrid(niveau);
     }
 
     public void Failed()
     {
-        Console.WriteLine("Game over");
-        niveau = 1;
-        ActuelGrid.GameOver();
+        chance++;
+        if(chance==2)
+        {
+            Console.WriteLine("Game over");
+            niveau = 1;
+            ActuelGrid.GameOver();
+        }
     }
 
 #line default

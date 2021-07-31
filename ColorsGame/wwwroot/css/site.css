@@ -50,8 +50,8 @@ a, .btn-link {
     }
 
 .table{
-  /*  height: 60vh ;
-    width: 60vw; */
+ height: 60vh ;
+    width: 60vw;
 }
 .Black-cell,
 .Grey-cell,
@@ -61,8 +61,8 @@ a, .btn-link {
 .Green-cell,
 .Yellow-cell,
 .Red-cell{
-    width :33px ; 
-    height: 33px ; 
+    width :40% ; 
+    height: 40% ; 
 }
 
 .Blue-cell {
