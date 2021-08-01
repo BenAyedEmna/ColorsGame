@@ -1,12 +1,13 @@
 ﻿@page "/Game"
 @using Models;
+
 @if(ActuelGrid.GameIsNotStarted()==true)
             {
                 <button @onclick="Start">Start!</button>
             }
 @if(ActuelGrid.GameIsStarted()==true)
 {
-    <div>Level:@niveau</div>
+    <div>Level:@niveau.Niveau</div>
     <div>choise @ActuelGrid.TrueColor</div>
     <table class="table">
     @for (var i = 0; i < ActuelGrid.Column; i++)
@@ -110,7 +111,7 @@ else if(ActuelGrid.GameIsOver()== true)
 
 @code 
 {
-    static int niveau = 1;
+    Level niveau = new Level(); 
     static int chance = 0;
     Grid ActuelGrid = new Grid();
     protected override Task OnInitializedAsync()
@@ -128,8 +129,8 @@ else if(ActuelGrid.GameIsOver()== true)
     {
         Console.WriteLine("coool");
         chance = 0;
-        niveau++;
-        ActuelGrid.RefreshGrid(niveau);
+        niveau.NextLevel(ActuelGrid); 
+        ActuelGrid.RefreshGrid(niveau.Niveau);
     }
 
     public void Failed()
@@ -138,7 +139,7 @@ else if(ActuelGrid.GameIsOver()== true)
         if(chance==2)
         {
             Console.WriteLine("Game over");
-            niveau = 1;
+            niveau.Niveau = 1;
             ActuelGrid.GameOver();
         }
     }

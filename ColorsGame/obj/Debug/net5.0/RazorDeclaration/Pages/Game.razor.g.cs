@@ -98,9 +98,9 @@ using Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 112 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
+#line 113 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
  
-    static int niveau = 1;
+    Level niveau = new Level(); 
     static int chance = 0;
     Grid ActuelGrid = new Grid();
     protected override Task OnInitializedAsync()
@@ -118,8 +118,8 @@ using Models;
     {
         Console.WriteLine("coool");
         chance = 0;
-        niveau++;
-        ActuelGrid.RefreshGrid(niveau);
+        niveau.NextLevel(ActuelGrid); 
+        ActuelGrid.RefreshGrid(niveau.Niveau);
     }
 
     public void Failed()
@@ -128,7 +128,7 @@ using Models;
         if(chance==2)
         {
             Console.WriteLine("Game over");
-            niveau = 1;
+            niveau.Niveau = 1;
             ActuelGrid.GameOver();
         }
     }

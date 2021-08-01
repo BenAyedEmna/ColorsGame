@@ -7,7 +7,6 @@ namespace ColorsGame.Models
 {
     public class Grid
     {
-        public int Niveau { get; set; }
         public int Row { get; set; }
         public int Column  { get; set; }
         public List<List<Cellule>> grid { get; set; }
@@ -51,17 +50,8 @@ namespace ColorsGame.Models
             this.SetColors(1);
             CreateGrid(); 
         }
-        public void NextLevel()
-        {     
-            this.Niveau++;
-            if (this.Column > this.Row)
-                this.Row = this.Row * 2;
-            else
-                this.Column = this.Column * 2;
-        } 
         public void RefreshGrid(int niveau)
         {
-            this.NextLevel();
             this.SetColors(niveau); 
             this.CreateGrid(); 
         }
@@ -69,7 +59,6 @@ namespace ColorsGame.Models
         {
             this.InitialGrid(); 
             this.State = PlayState.Playing;
-
         }
         public void GameOver()
         {

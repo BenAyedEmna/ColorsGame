@@ -50,9 +50,13 @@ a, .btn-link {
     }
 
 .table{
- height: 60vh ;
-    width: 60vw;
+    height: 70vh ;
+    width: 70vw;
 }
+.table tr td {
+    border: 1px solid #ccc;
+}
+
 .Black-cell,
 .Grey-cell,
 .Purple-cell
