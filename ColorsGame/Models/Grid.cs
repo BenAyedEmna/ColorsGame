@@ -13,15 +13,10 @@ namespace ColorsGame.Models
         private PlayState State;
         public Colors TrueColor { get; set; }
         public Colors FalseColor { get; set; }
-
-        /*public Grid()
+        public int CellNbr()
         {
-            this.Column = 2;
-            this.Row = 1;
-            this.State = PlayState.NotStarted;
-            this.TrueColor = Colors.grey;
-            this.FalseColor = Colors.black; 
-        }*/
+            return (this.Column * this.Row); 
+        }
         public void CreateGrid() 
         {
             this.grid = new List<List<Cellule>>();
@@ -36,17 +31,19 @@ namespace ColorsGame.Models
                 }
                 grid.Add(ListCell);
             }
-            // choise one random cellule to make it red 
+            /*choise one random cellule to make it red 
             Random rnd1 = new Random();
             int RandomColum, RandomRow;
             RandomColum = rnd1.Next(this.Column);
-            RandomRow = rnd1.Next(this.Row);
-            this.grid[RandomColum][RandomRow].Color = this.TrueColor;
+            RandomRow = rnd1.Next(this.Row);*/
+            Cellule RandmCell = new Cellule();
+            RandmCell = RandmCell.RandomCell(this);
+            RandmCell.Color = this.TrueColor; 
         }
         public void InitialGrid()
         {
-            this.Column = 2;
-            this.Row = 1;
+            this.Column = 1;
+            this.Row = 2;
             this.SetColors(1);
             CreateGrid(); 
         }
@@ -76,6 +73,11 @@ namespace ColorsGame.Models
         {
             return this.State == PlayState.NotStarted;
         }
+        public void CountTime()
+        {
+            this.State = PlayState.PlayingCountingTime; 
+        }
+
         public void SetColors(int Level)
         {
             switch(Level%4)

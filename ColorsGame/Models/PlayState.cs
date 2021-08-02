@@ -2,6 +2,7 @@
 public enum PlayState
 {
     NotStarted,
-    Playing, 
+    Playing,
+    PlayingCountingTime, 
     GameOver
 }

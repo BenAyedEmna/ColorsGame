@@ -89,6 +89,13 @@ using Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Game")]
     public partial class Game : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -100,7 +107,7 @@ using Models;
 #nullable restore
 #line 113 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
  
-    Level niveau = new Level(); 
+    Level niveau = new Level();
     static int chance = 0;
     Grid ActuelGrid = new Grid();
     protected override Task OnInitializedAsync()
@@ -118,7 +125,7 @@ using Models;
     {
         Console.WriteLine("coool");
         chance = 0;
-        niveau.NextLevel(ActuelGrid); 
+        niveau.NextLevel(ActuelGrid);
         ActuelGrid.RefreshGrid(niveau.Niveau);
     }
 
@@ -131,6 +138,20 @@ using Models;
             niveau.Niveau = 1;
             ActuelGrid.GameOver();
         }
+    }
+    public void StartCountdown(int Count)
+    {
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            if (Count > 0)
+            {
+                Count--;
+                InvokeAsync(() =>
+                {
+                    StateHasChanged();
+                });
+            }
+        }), null, 1000, 1000);
     }
 
 #line default
