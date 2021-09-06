@@ -17,14 +17,13 @@ namespace ColorsGame.Models
         }
         public Cellule RandomCell(Grid grid)
         {
-            // choise one random cellule to make it red 
             Random rnd1 = new Random();
             int RandomColum, RandomRow;
             RandomColum = rnd1.Next(grid.Column);
             RandomRow = rnd1.Next(grid.Row);
-            return grid.grid[RandomColum][RandomRow]; 
-/*            grid.grid[RandomColum][RandomRow].Color = grid.TrueColor;
-*/
+            return grid.grid[RandomColum][RandomRow];
+            /*grid.grid[RandomColum][RandomRow].Color = grid.TrueColor;
+            */
 
         }
     }

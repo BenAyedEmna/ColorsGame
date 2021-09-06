@@ -105,14 +105,14 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 113 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
+#line 142 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
  
     Level niveau = new Level();
-    static int chance = 0;
     Grid ActuelGrid = new Grid();
     protected override Task OnInitializedAsync()
     {
         ActuelGrid.InitialGrid();
+        niveau.Counter = 10;
         return base.OnInitializedAsync();
     }
 
@@ -124,22 +124,28 @@ using System.Threading;
     public void ColorFounded()
     {
         Console.WriteLine("coool");
-        chance = 0;
         niveau.NextLevel(ActuelGrid);
         ActuelGrid.RefreshGrid(niveau.Niveau);
+        if (niveau.Niveau > 6)
+        {
+            ActuelGrid.StartCountingTime();
+        }
     }
+
+    private int Count { get; set; } = 10; 
 
     public void Failed()
     {
-        chance++;
-        if(chance==2)
+        niveau.Chance++;
+        if (niveau.Chance == 2)
         {
             Console.WriteLine("Game over");
-            niveau.Niveau = 1;
             ActuelGrid.GameOver();
+            niveau.Niveau = 1;
         }
     }
-    public void StartCountdown(int Count)
+
+    public void StartCountdown()
     {
         var timer = new Timer(new TimerCallback(_ =>
         {

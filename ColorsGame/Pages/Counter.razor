@@ -1,16 +1,27 @@
-﻿@page "/counter"
+﻿@page "/Counter"
 
-<h1>Counter</h1>
+@using System.Threading;
 
-<p>Current count: @currentCount</p>
+<h1>@Count</h1>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button @onclick=@StartCountdown>Start Timer</button>
 
-@code {
-    private int currentCount = 0;
+@functions {
+    private int Count { get; set; } = 10;
 
-    private void IncrementCount()
+    void StartCountdown()
     {
-        currentCount++;
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            if (Count > 0)
+            {
+                Count--;
+                InvokeAsync(() =>
+                {
+
+                    StateHasChanged();
+                });
+            }
+        }), null, 1000, 1000);
     }
 }

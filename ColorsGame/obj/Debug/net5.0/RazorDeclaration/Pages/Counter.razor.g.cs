@@ -82,7 +82,14 @@ using ColorsGame.Shared;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
+#nullable restore
+#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Counter.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -92,12 +99,23 @@ using ColorsGame.Shared;
         #pragma warning restore 1998
 #nullable restore
 #line 9 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Counter.razor"
-       
-    private int currentCount = 0;
+            
+    private int Count { get; set; } = 10;
 
-    private void IncrementCount()
+    void StartCountdown()
     {
-        currentCount++;
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            if (Count > 0)
+            {
+                Count--;
+                InvokeAsync(() =>
+                {
+
+                    StateHasChanged();
+                });
+            }
+        }), null, 1000, 1000);
     }
 
 #line default

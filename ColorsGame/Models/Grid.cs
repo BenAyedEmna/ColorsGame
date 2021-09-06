@@ -10,13 +10,12 @@ namespace ColorsGame.Models
         public int Row { get; set; }
         public int Column  { get; set; }
         public List<List<Cellule>> grid { get; set; }
+
         private PlayState State;
+        public Level ActuelLevel { get; set; } 
         public Colors TrueColor { get; set; }
         public Colors FalseColor { get; set; }
-        public int CellNbr()
-        {
-            return (this.Column * this.Row); 
-        }
+       
         public void CreateGrid() 
         {
             this.grid = new List<List<Cellule>>();
@@ -31,14 +30,9 @@ namespace ColorsGame.Models
                 }
                 grid.Add(ListCell);
             }
-            /*choise one random cellule to make it red 
-            Random rnd1 = new Random();
-            int RandomColum, RandomRow;
-            RandomColum = rnd1.Next(this.Column);
-            RandomRow = rnd1.Next(this.Row);*/
             Cellule RandmCell = new Cellule();
             RandmCell = RandmCell.RandomCell(this);
-            RandmCell.Color = this.TrueColor; 
+            RandmCell.Color = this.TrueColor;
         }
         public void InitialGrid()
         {
@@ -73,34 +67,49 @@ namespace ColorsGame.Models
         {
             return this.State == PlayState.NotStarted;
         }
-        public void CountTime()
+        public bool CountingTime()
+        {
+            return this.State == PlayState.PlayingCountingTime;
+        }
+
+        public void StartCountingTime()
         {
             this.State = PlayState.PlayingCountingTime; 
         }
 
+        public void RandomCellColored()
+        {
+            Cellule RandmCell = new Cellule();
+            RandmCell = RandmCell.RandomCell(this);
+        }
+
         public void SetColors(int Level)
         {
-            switch(Level%4)
+            if (Level > 6)
+            {
+                return; 
+            }
+            this.TrueColor = Colors.purple;
+            this.FalseColor = Colors.orange;
+            /*switch(Level%4)
             {
                 case 1:
                     this.TrueColor = Colors.grey; 
                     this.FalseColor = Colors.black;
                     break;
                 case 2:
-                    this.TrueColor = Colors.red; 
-                    this.FalseColor = Colors.blue;
+                    this.TrueColor = Colors.purple;
+                    this.FalseColor = Colors.orange; 
                     break;
                 case 3:
                     this.TrueColor = Colors.green;
                     this.FalseColor = Colors.yellow;
                     break;
                 case 0:
-                    this.TrueColor = Colors.purple;
-                    this.FalseColor = Colors.orange;
+                    this.TrueColor = Colors.red;
+                    this.FalseColor = Colors.blue;
                     break;
-            }
-                
-                
+            }*/
         }
     }
 
