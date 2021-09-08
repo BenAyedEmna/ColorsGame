@@ -12,103 +12,21 @@
 @if (ActuelGrid.GameIsStarted() || ActuelGrid.CountingTime())
 {
     <div>Level:@niveau.Niveau</div>
-    @if (niveau.Counter > 0)
-    {
-        <div> choise @ActuelGrid.TrueColor before @niveau.Counter</div>
-    }
-    else
-    {
-        <div> choise @ActuelGrid.TrueColor </div>
+    <div> choise @ActuelGrid.TrueColor </div>
 
-    }
     <table class="table">
         @for (var i = 0; i < ActuelGrid.Column; i++)
         {
             <tr>
                 @for (var j = 0; j < ActuelGrid.Row; j++)
                 {
-                    switch (ActuelGrid.grid[i][j].Color)
+                    if (ActuelGrid.grid[i][j].Color == ActuelGrid.TrueColor)
                     {
-                        case Colors.green:
-                            if (Colors.green == ActuelGrid.TrueColor)
-                            {
-                                <td class="Green-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Green-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.blue:
-                            if (Colors.blue == ActuelGrid.TrueColor)
-                            {
-                                <td class="Blue-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Blue-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.yellow:
-                            if (Colors.yellow == ActuelGrid.TrueColor)
-                            {
-                                <td class="Yellow-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Yellow-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.red:
-                            if (Colors.red == ActuelGrid.TrueColor)
-                            {
-                                <td class="Red-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Red-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.black:
-                            if (Colors.black == ActuelGrid.TrueColor)
-                            {
-                                <td class="Black-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Black-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.grey:
-                            if (Colors.grey == ActuelGrid.TrueColor)
-                            {
-                                <td class="Grey-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Grey-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.orange:
-                            if (Colors.orange == ActuelGrid.TrueColor)
-                            {
-                                <td class="Orange-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Orange-cell" @onclick="Failed"></td>
-                            }
-                            break;
-                        case Colors.purple:
-                            if (Colors.purple == ActuelGrid.TrueColor)
-                            {
-                                <td class="Purple-cell" @onclick="ColorFounded"></td>
-                            }
-                            else
-                            {
-                                <td class="Purple-cell" @onclick="Failed"></td>
-                            }
-                            break;
+                        <td class="@ActuelGrid.TrueColor.ToString()" @onclick="ColorFounded"></td>
+                    }
+                    else
+                    {
+                        <td class="@ActuelGrid.FalseColor.ToString()" @onclick="Failed"></td>
                     }
                 }
             </tr>
@@ -119,13 +37,12 @@
         }
     </table>
 }
-else if (ActuelGrid.GameIsOver() == true)
+else if (ActuelGrid.GameIsOver())
 {
     <div class="GameOver">Game Over</div>
     <hr />
     <button @onclick="Start">Play again </button>
 }
-@niveau.Counter
 
 
 @code
@@ -142,18 +59,6 @@ else if (ActuelGrid.GameIsOver() == true)
     public void Start()
     {
         ActuelGrid.StartGame();
-    }
-
-    public void Affiche(Colors Color)
-    {
-        if (Color == ActuelGrid.TrueColor)
-        {
-            <div class="@Color.ToString()" @onclick="ColorFounded"></div>
-        }
-        else
-        {
-            <div class="@Color.ToString()" @onclick="Failed"></div>
-        }
     }
 
     public void ColorFounded()
@@ -178,7 +83,7 @@ else if (ActuelGrid.GameIsOver() == true)
         }
     }
 
-    private int Count ;
+    private int Count;
     public void StartCountdown()
     {
         var timer = new Timer(new TimerCallback(_ =>

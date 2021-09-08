@@ -105,7 +105,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 132 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
+#line 49 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
  
     Level niveau = new Level();
     Grid ActuelGrid = new Grid();
@@ -119,56 +119,6 @@ using System.Threading;
     public void Start()
     {
         ActuelGrid.StartGame();
-    }
-
-    public void Affiche(Colors Color)
-    {
-        if (Color == ActuelGrid.TrueColor)
-        {
-
-#line default
-#line hidden
-#nullable disable
-        __builder.AddContent(0, "            ");
-        __builder.OpenElement(1, "div");
-        __builder.AddAttribute(2, "class", 
-#nullable restore
-#line 151 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
-                         Color.ToString()
-
-#line default
-#line hidden
-#nullable disable
-        );
-        __builder.AddAttribute(3, "@onclick", "ColorFounded");
-        __builder.CloseElement();
-        __builder.AddMarkupContent(4, "\r\n");
-#nullable restore
-#line 152 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
-        }
-        else
-        {
-
-#line default
-#line hidden
-#nullable disable
-        __builder.AddContent(5, "            ");
-        __builder.OpenElement(6, "div");
-        __builder.AddAttribute(7, "class", 
-#nullable restore
-#line 155 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
-                         Color.ToString()
-
-#line default
-#line hidden
-#nullable disable
-        );
-        __builder.AddAttribute(8, "@onclick", "Failed");
-        __builder.CloseElement();
-        __builder.AddMarkupContent(9, "\r\n");
-#nullable restore
-#line 156 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
-        }
     }
 
     public void ColorFounded()
@@ -193,7 +143,7 @@ using System.Threading;
         }
     }
 
-    private int Count ;
+    private int Count;
     public void StartCountdown()
     {
         var timer = new Timer(new TimerCallback(_ =>

@@ -57,50 +57,39 @@ a, .btn-link {
     border: 1px solid #ccc;
 }
 
-.Black-cell,
-.Grey-cell,
-.Purple-cell
-.Orange-cell,
-.Blue-cell,
-.Green-cell,
-.Yellow-cell,
-.Red-cell{
+.Black,
+.Grey,
+.Purple,
+.Orange,
+.Blue,
+.Green,
+.Yellow,
+.Red{
     width :40% ; 
     height: 40% ; 
 }
 
-.Blue-cell {
+.blue{
     background-color: blue;
 }
 
-.Green-cell{
+.green{
     background-color: aquamarine; 
 }
 
-.Yellow-cell {
+.yellow{
     background-color: yellow;
 }
-.Red-cell {
+
+.red{
     background-color: red;
 }
-.Black-cell{
+
+.black{
     background-color: black; 
-
 }
-.Grey-cell {
+.grey{
     background-color: grey;
-
-}
- .Purple-cell{
-     background-color: purple; 
- }
- .Orange-cell{
-     background-color: orange; 
- }
-
-.GameOver{
-    position: absolute; 
-    background-color: chocolate; 
 }
 
 .purple{
@@ -109,4 +98,9 @@ a, .btn-link {
 
 .orange{
     background-color : lightcoral; 
+}
+
+.GameOver {
+    position: absolute;
+    background-color: chocolate;
 }
