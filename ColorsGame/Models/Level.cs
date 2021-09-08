@@ -15,7 +15,6 @@ namespace ColorsGame.Models
             this.Niveau = 1;
             this.Chance = 0;
             this.Counter = 0;
-
         }
         public Level(int niveau)
         {

@@ -87,9 +87,7 @@ namespace ColorsGame.Models
             {
                 return; 
             }
-            this.TrueColor = Colors.purple;
-            this.FalseColor = Colors.orange;
-            /*switch(Level%4)
+            switch(Level%4)
             {
                 case 1:
                     this.TrueColor = Colors.grey; 
@@ -107,7 +105,7 @@ namespace ColorsGame.Models
                     this.TrueColor = Colors.red;
                     this.FalseColor = Colors.blue;
                     break;
-            }*/
+            }
         }
     }
 
