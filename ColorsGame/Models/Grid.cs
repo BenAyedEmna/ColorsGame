@@ -15,6 +15,12 @@ namespace ColorsGame.Models
         public Level ActuelLevel { get; set; } 
         public Colors TrueColor { get; set; }
         public Colors FalseColor { get; set; }
+        public void RandomCellColored()
+        {
+            Cellule RandmCell = new Cellule();
+            RandmCell = RandmCell.RandomCell(this);
+            RandmCell.Color = this.TrueColor;
+        }
        
         public void CreateGrid() 
         {
@@ -30,9 +36,7 @@ namespace ColorsGame.Models
                 }
                 grid.Add(ListCell);
             }
-            Cellule RandmCell = new Cellule();
-            RandmCell = RandmCell.RandomCell(this);
-            RandmCell.Color = this.TrueColor;
+            this.RandomCellColored(); 
         }
         public void InitialGrid()
         {
@@ -75,12 +79,6 @@ namespace ColorsGame.Models
         public void StartCountingTime()
         {
             this.State = PlayState.PlayingCountingTime; 
-        }
-
-        public void RandomCellColored()
-        {
-            Cellule RandmCell = new Cellule();
-            RandmCell = RandmCell.RandomCell(this);
         }
 
         public void SetColors(int Level)
