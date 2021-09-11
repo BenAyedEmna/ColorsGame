@@ -1,27 +1,42 @@
 ﻿@page "/Counter"
+<h1>Timer</h1>
 
-@using System.Threading;
+<button @onclick="StartTimer">Start</button>
+<p>@Count</p>
 
-<h1>@Count</h1>
-
-<button @onclick=@StartCountdown>Start Timer</button>
-
-@functions {
-    private int Count { get; set; } = 10;
-
-    void StartCountdown()
-    {
-        var timer = new Timer(new TimerCallback(_ =>
-        {
-            if (Count > 0)
+@if(Count==0)
+{
+    <div>oooolduuuuu</div>
+}
+else
             {
-                Count--;
-                InvokeAsync(() =>
-                {
-
-                    StateHasChanged();
-                });
+                <div>bekliyoruuuuuuuz</div>
             }
-        }), null, 1000, 1000);
+@code {
+    private static System.Timers.Timer aTimer;
+    private int Count = 10;
+    public void StartTimer()
+    {
+        aTimer = new System.Timers.Timer(1000);
+        aTimer.Elapsed += StartCountDown;
+        aTimer.Enabled = true;
+
     }
+
+    public void StartCountDown(Object source, System.Timers.ElapsedEventArgs e)
+    {
+        if (Count > 0)
+        {
+            Count -= 1;
+        }
+        else
+        {
+            aTimer.Enabled = false;
+        }
+        InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
 }

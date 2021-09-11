@@ -105,7 +105,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 48 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
+#line 46 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
  
     Level niveau = new Level();
     Grid ActuelGrid = new Grid();
@@ -123,13 +123,9 @@ using System.Threading;
 
     public void ColorFounded()
     {
-        Console.WriteLine("coool");
+        Console.WriteLine("cool");
         niveau.NextLevel(ActuelGrid);
         ActuelGrid.RefreshGrid(niveau.Niveau);
-        if (niveau.Niveau > 6)
-        {
-            ActuelGrid.StartCountingTime();
-        }
     }
 
     public void Failed()
@@ -143,7 +139,16 @@ using System.Threading;
         }
     }
 
-    private int Count;
+    
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 103 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Game.razor"
+      
+
+    public int Count;
     public void StartCountdown()
     {
         var timer = new Timer(new TimerCallback(_ =>
@@ -159,23 +164,18 @@ using System.Threading;
         }), null, 1000, 1000);
     }
 
-    public void SwitchPlace()
+public void SwitchPlace()
+{
+    Count = niveau.Counter;
+    StartCountdown();
+    if (Count == 0)
     {
+        ActuelGrid.ColorAllTheGrid(); 
+        ActuelGrid.RandomCellColored();
         Count = niveau.Counter;
-        StartCountdown();
-        if (Count == 0)
-        {
-            for (var k = 0; k < ActuelGrid.Column; k++)
-            {
-                for (var l = 0; l < ActuelGrid.Row; l++)
-                {
-                    ActuelGrid.grid[k][l].Color = ActuelGrid.FalseColor;
-                }
-            }
-            ActuelGrid.RandomCellColored();
-            SwitchPlace();
-        }
     }
+}
+
 
 #line default
 #line hidden

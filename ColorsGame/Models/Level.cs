@@ -41,6 +41,10 @@ namespace ColorsGame.Models
             {
                 this.Counter--; 
             }
+            if (this.Niveau > 6)
+            {
+                grid.StartCountingTime();
+            }
         }
     }
 }

@@ -22,9 +22,6 @@ namespace ColorsGame.Models
             RandomColum = rnd1.Next(grid.Column);
             RandomRow = rnd1.Next(grid.Row);
             return grid.grid[RandomColum][RandomRow];
-            /*grid.grid[RandomColum][RandomRow].Color = grid.TrueColor;
-            */
-
         }
     }
 }

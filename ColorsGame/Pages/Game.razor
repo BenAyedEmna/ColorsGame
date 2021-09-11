@@ -2,8 +2,6 @@
 @using Models;
 @using System.Threading;
 
-<div>@Colors.orange.ToString()</div>
-
 @if (ActuelGrid.GameIsNotStarted())
 {
     <button class="start" @onclick="Start">Start!</button>
@@ -62,13 +60,9 @@ else if (ActuelGrid.GameIsOver())
 
     public void ColorFounded()
     {
-        Console.WriteLine("coool");
+        Console.WriteLine("cool");
         niveau.NextLevel(ActuelGrid);
         ActuelGrid.RefreshGrid(niveau.Niveau);
-        if (niveau.Niveau > 6)
-        {
-            ActuelGrid.StartCountingTime();
-        }
     }
 
     public void Failed()
@@ -82,7 +76,33 @@ else if (ActuelGrid.GameIsOver())
         }
     }
 
-    private int Count;
+    @*private static System.Timers.Timer aTimer;
+    public int Count;
+    public void StartTimer()
+    {
+        aTimer = new System.Timers.Timer(1000);
+        aTimer.Elapsed += StartCountDown;
+        aTimer.Enabled = true;
+    }
+
+    public void StartCountDown(Object source, System.Timers.ElapsedEventArgs e)
+    {
+        if (Count > 0)
+        {
+            Count--;
+        }
+        else
+        {
+            return;
+            //aTimer.Enabled = false;
+        
+        InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    *@
+
+    public int Count;
     public void StartCountdown()
     {
         var timer = new Timer(new TimerCallback(_ =>
@@ -98,21 +118,16 @@ else if (ActuelGrid.GameIsOver())
         }), null, 1000, 1000);
     }
 
-    public void SwitchPlace()
+public void SwitchPlace()
+{
+    Count = niveau.Counter;
+    StartCountdown();
+    if (Count == 0)
     {
+        ActuelGrid.ColorAllTheGrid(); 
+        ActuelGrid.RandomCellColored();
         Count = niveau.Counter;
-        StartCountdown();
-        if (Count == 0)
-        {
-            for (var k = 0; k < ActuelGrid.Column; k++)
-            {
-                for (var l = 0; l < ActuelGrid.Row; l++)
-                {
-                    ActuelGrid.grid[k][l].Color = ActuelGrid.FalseColor;
-                }
-            }
-            ActuelGrid.RandomCellColored();
-            SwitchPlace();
-        }
     }
+}
+
 }

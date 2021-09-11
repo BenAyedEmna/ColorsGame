@@ -82,13 +82,6 @@ using ColorsGame.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Counter.razor"
-using System.Threading;
-
-#line default
-#line hidden
-#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,25 +91,34 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Counter.razor"
-            
-    private int Count { get; set; } = 10;
-
-    void StartCountdown()
+#line 15 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Counter.razor"
+       
+    private static System.Timers.Timer aTimer;
+    private int Count = 10;
+    public void StartTimer()
     {
-        var timer = new Timer(new TimerCallback(_ =>
-        {
-            if (Count > 0)
-            {
-                Count--;
-                InvokeAsync(() =>
-                {
+        aTimer = new System.Timers.Timer(1000);
+        aTimer.Elapsed += StartCountDown;
+        aTimer.Enabled = true;
 
-                    StateHasChanged();
-                });
-            }
-        }), null, 1000, 1000);
     }
+
+    public void StartCountDown(Object source, System.Timers.ElapsedEventArgs e)
+    {
+        if (Count > 0)
+        {
+            Count -= 1;
+        }
+        else
+        {
+            aTimer.Enabled = false;
+        }
+        InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
 
 #line default
 #line hidden

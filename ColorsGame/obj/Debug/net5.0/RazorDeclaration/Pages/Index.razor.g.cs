@@ -82,6 +82,20 @@ using ColorsGame.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+using Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +104,82 @@ using ColorsGame.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 47 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+ 
+    Level niveau = new Level();
+    Grid ActuelGrid = new Grid();
+    protected override Task OnInitializedAsync()
+    {
+        ActuelGrid.InitialGrid();
+        niveau.Counter = 10;
+        return base.OnInitializedAsync();
+    }
+
+    public void Start()
+    {
+        ActuelGrid.StartGame();
+    }
+
+    public void ColorFounded()
+    {
+        Console.WriteLine("cool");
+        niveau.NextLevel(ActuelGrid);
+        ActuelGrid.RefreshGrid(niveau.Niveau);
+    }
+
+    public void Failed()
+    {
+        niveau.Chance++;
+        if (niveau.Chance == 2)
+        {
+            Console.WriteLine("Game over");
+            ActuelGrid.GameOver();
+            niveau.Niveau = 1;
+        }
+    }
+
+    
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 104 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+      
+
+    public int Count;
+    public void StartCountdown()
+    {
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            if (Count > 0)
+            {
+                Count--;
+                InvokeAsync(() =>
+                {
+                    StateHasChanged();
+                });
+            }
+        }), null, 1000, 1000);
+    }
+
+    public void SwitchPlace()
+    {
+        Count = niveau.Counter;
+        StartCountdown();
+        if (Count == 0)
+        {
+            ActuelGrid.ColorAllTheGrid();
+            ActuelGrid.RandomCellColored();
+            Count = niveau.Counter;
+        }
+    }
+
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

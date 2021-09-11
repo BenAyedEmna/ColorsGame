@@ -8,21 +8,14 @@ namespace ColorsGame.Models
     public class Grid
     {
         public int Row { get; set; }
-        public int Column  { get; set; }
+        public int Column { get; set; }
         public List<List<Cellule>> grid { get; set; }
 
         private PlayState State;
-        public Level ActuelLevel { get; set; } 
+        public Level ActuelLevel { get; set; }
         public Colors TrueColor { get; set; }
-        public Colors FalseColor { get; set; }
-        public void RandomCellColored()
-        {
-            Cellule RandmCell = new Cellule();
-            RandmCell = RandmCell.RandomCell(this);
-            RandmCell.Color = this.TrueColor;
-        }
-       
-        public void CreateGrid() 
+        public Colors FalseColor { get; set; }        
+        public void CreateGrid()
         {
             this.grid = new List<List<Cellule>>();
             for (var i = 0; i < this.Column; i++)
@@ -32,32 +25,50 @@ namespace ColorsGame.Models
                 for (var j = 0; j < this.Row; j++)
                 {
                     cell = new Cellule(this.FalseColor);
-                    ListCell.Add(cell);                                       
+                    ListCell.Add(cell);
                 }
                 grid.Add(ListCell);
             }
-            this.RandomCellColored(); 
+            this.RandomCellColored();
         }
         public void InitialGrid()
         {
             this.Column = 1;
             this.Row = 2;
             this.SetColors(1);
-            CreateGrid(); 
+            CreateGrid();
         }
         public void RefreshGrid(int niveau)
         {
-            this.SetColors(niveau); 
-            this.CreateGrid(); 
+            this.SetColors(niveau);
+            this.CreateGrid();
+        }
+
+        // colorer tous les cellules avec la couleur dominanate
+        public void ColorAllTheGrid()
+        {
+            for (var k = 0; k < this.Column; k++)
+            {
+                for (var l = 0; l < this.Row; l++)
+                {
+                    this.grid[k][l].Color = this.FalseColor;
+                }
+            }
+        }
+        public void RandomCellColored()
+        {
+            Cellule RandmCell = new Cellule();
+            RandmCell = RandmCell.RandomCell(this);
+            RandmCell.Color = this.TrueColor;
         }
         public void StartGame()
         {
-            this.InitialGrid(); 
+            this.InitialGrid();
             this.State = PlayState.Playing;
         }
         public void GameOver()
         {
-            this.State = PlayState.GameOver; 
+            this.State = PlayState.GameOver;
         }
         public bool GameIsOver()
         {
@@ -78,24 +89,24 @@ namespace ColorsGame.Models
 
         public void StartCountingTime()
         {
-            this.State = PlayState.PlayingCountingTime; 
+            this.State = PlayState.PlayingCountingTime;
         }
 
         public void SetColors(int Level)
         {
             if (Level > 6)
             {
-                return; 
+                return;
             }
-            switch(Level%4)
+            switch (Level % 4)
             {
                 case 1:
-                    this.TrueColor = Colors.grey; 
+                    this.TrueColor = Colors.grey;
                     this.FalseColor = Colors.black;
                     break;
                 case 2:
                     this.TrueColor = Colors.purple;
-                    this.FalseColor = Colors.orange; 
+                    this.FalseColor = Colors.orange;
                     break;
                 case 3:
                     this.TrueColor = Colors.green;
@@ -107,8 +118,5 @@ namespace ColorsGame.Models
                     break;
             }
         }
-    }
-
-   
-        
+    } 
 }
