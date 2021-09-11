@@ -1,5 +1,4 @@
 ﻿@page "/"
-
 @using Models;
 @using System.Threading;
 
@@ -7,7 +6,6 @@
 {
     <button class="start" @onclick="Start">Start!</button>
 }
-
 @if (ActuelGrid.GameIsStarted() || ActuelGrid.CountingTime())
 {
     <div>Level:@niveau.Niveau</div>
@@ -29,20 +27,18 @@
                     }
                 }
             </tr>
-            @if (ActuelGrid.CountingTime())
-            {
-                SwitchPlace();
-            }
         }
     </table>
 }
-else if (ActuelGrid.GameIsOver())
+@if (ActuelGrid.CountingTime())
 {
-    <div class="GameOver">Game Over</div>
-    <hr />
-    <button @onclick="Start">Play again </button>
+    SwitchPlace();
 }
-
+@if (ActuelGrid.GameIsOver())
+{
+    <p>Game Over</p>
+    <button class="start" @onclick="Start">Play again </button>
+}
 @code
 {
     Level niveau = new Level();
@@ -130,5 +126,4 @@ else if (ActuelGrid.GameIsOver())
             Count = niveau.Counter;
         }
     }
-
 }

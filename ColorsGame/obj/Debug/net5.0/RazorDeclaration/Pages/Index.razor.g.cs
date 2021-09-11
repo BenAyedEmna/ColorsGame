@@ -83,14 +83,14 @@ using ColorsGame.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+#line 2 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
 using Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+#line 3 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
 using System.Threading;
 
 #line default
@@ -105,7 +105,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 47 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+#line 43 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
  
     Level niveau = new Level();
     Grid ActuelGrid = new Grid();
@@ -145,7 +145,7 @@ using System.Threading;
 #line hidden
 #nullable disable
 #nullable restore
-#line 104 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
+#line 100 "C:\Users\ASUS\Desktop\Emna\stage\ColorsGame\ColorsGame\Pages\Index.razor"
       
 
     public int Count;
@@ -175,7 +175,6 @@ using System.Threading;
             Count = niveau.Counter;
         }
     }
-
 
 #line default
 #line hidden

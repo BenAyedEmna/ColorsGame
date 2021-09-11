@@ -49,9 +49,32 @@ a, .btn-link {
         top: 0.5rem;
     }
 
+
+.start {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+    margin-top: 230px;
+    background-color: chocolate;
+    border-radius: 40%;
+    color: white;
+    border: 2px solid #4CAF50; /* Green */
+}
+
+.GameOver{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 230px;
+    background-color: chocolate;
+}
+
 .table{
-    height: 70vh ;
-    width: 70vw;
+    height: 80vh ;
+    width: 80vw;
+    margin: auto ; 
+    margin-top: 50px; 
 }
 .table tr td {
     border: 1px solid #ccc;
@@ -65,8 +88,8 @@ a, .btn-link {
 .Green,
 .Yellow,
 .Red{
-    width :40% ; 
-    height: 40% ; 
+    width :50% ; 
+    height: 50% ; 
 }
 
 .blue{
@@ -88,6 +111,7 @@ a, .btn-link {
 .black{
     background-color: black; 
 }
+
 .grey{
     background-color: grey;
 }
@@ -98,9 +122,4 @@ a, .btn-link {
 
 .orange{
     background-color : lightcoral; 
-}
-
-.GameOver {
-    position: absolute;
-    background-color: chocolate;
 }
