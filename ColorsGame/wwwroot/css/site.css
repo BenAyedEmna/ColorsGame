@@ -123,3 +123,15 @@ a, .btn-link {
 .orange{
     background-color : lightcoral; 
 }
+
+.half-circle {
+    width: 200px;
+    height: 100px; /* as the half of the width */
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border: 10px solid gray;
+    border-bottom: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
